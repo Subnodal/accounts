@@ -1,0 +1,25 @@
+{
+    "name": "Français (France)",
+    "nameShort": "Français",
+    "textDirection": "ltr",
+    "strings": {
+        "subnodal": "Sousnœud",
+
+        "redirectTitle": "Connexion en cours ...",
+        "signInTitle": "Connectez-vous au Sousnœud",
+        "createTitle": "Créer un compte Sousnœud",
+
+        "email": "Email",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmez le mot de passe",
+
+        "createConsent": "J'ai lu et j'accepte les conditions d'utilisation et la politique de confidentialité.",
+
+        "signIn": "Se connecter",
+        "create": "Créer",
+        "cancel": "Annuler",
+        "back": "Retour",
+
+        "copyright": "Copyright © Sousnœud Technologies. Tous les droits sont réservés."
+    }
+}

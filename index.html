@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+    Subnodal Accounts
+
+    Copyright (C) Subnodal Technologies. All Rights Reserved.
+
+    https://subnodal.com
+    Licenced by the Subnodal Open-Source Licence, which can be found at LICENCE.md.
+-->
+<html>
+    <head>
+        <title>Account - Subnodal</title>
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <meta name="description" content="Sign into your Subnodal Account to access Subnodal's services.">
+        <link rel="shortcut icon" href="/media/favicon.png">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass&family=Overpass+Mono&family=Material+Icons&display=swap">
+        <link rel="stylesheet" href="/style.css">
+        <script src="https://cdn.subnodal.com/lib/subelements.min.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body hidden>
+        <header>
+            <h1 class="middle logo"><a href="https://subnodal.com" target="_blank" class="hidden">{<strong>{{ _('subnodal').toLowerCase() }}</strong>}</a></h1>
+        </header>
+        <main>
+            <card class="auth middle">
+                <s-if condition="{{ page == pages.REDIRECT }}">
+                    <h2 class="mono" translate>redirectTitle</h2>
+                    <loader></loader>
+                </s-if>
+                <s-if condition="{{ page == pages.SIGN_IN }}">
+                    <h2 class="mono" translate>signInTitle</h2>
+                    <div class="authContent">
+                        <input placeholder="{{ _('email') }}">
+                        <input placeholder="{{ _('password') }}">
+                        <br>
+                        <a href="javascript:visitPage(pages.CREATE_ACCOUNT);" translate>createTitle</a>
+                    </div>
+                    <div class="authButtons">
+                        <button translate>signIn</button>
+                        <button onclick="window.history.back();" class="flat" translate>cancel</button>
+                    </div>
+                </s-if>
+                <s-if condition="{{ page == pages.CREATE_ACCOUNT }}">
+                    <h2 class="mono" translate>createTitle</h2>
+                    <div class="authContent">
+                        <input placeholder="{{ _('email') }}">
+                        <input placeholder="{{ _('password') }}">
+                        <input placeholder="{{ _('confirmPassword') }}">
+                        <label>
+                            <input type="checkbox">
+                            <span translate>createConsent</span>
+                        </label>
+                    </div>
+                    <div class="authButtons">
+                        <button translate>create</button>
+                        <button onclick="visitPage(pages.SIGN_IN);" class="flat" translate>back</button>
+                    </div>
+                </s-if>
+            </card>
+        </main>
+        <footer>
+            <span><icon aria-hidden="true">language</icon></span>
+            <select id="language"></select>
+            <span>·</span>
+            <span><abbr title="{{ _('copyright') }}">&copy; <span translate>subnodal</span></abbr></span>
+        </footer>
+    </body>
+</html>

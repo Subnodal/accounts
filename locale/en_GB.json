@@ -1,0 +1,25 @@
+{
+    "name": "English (United Kingdom)",
+    "nameShort": "English",
+    "textDirection": "ltr",
+    "strings": {
+        "subnodal": "Subnodal",
+
+        "redirectTitle": "Signing you in...",
+        "signInTitle": "Sign into Subnodal",
+        "createTitle": "Create a Subnodal account",
+
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+
+        "createConsent": "I have read and accept the Terms of Service and Privacy Policy.",
+
+        "signIn": "Sign in",
+        "create": "Create",
+        "cancel": "Cancel",
+        "back": "Back",
+
+        "copyright": "Copyright © Subnodal Technologies. All Rights Reserved."
+    }
+}
