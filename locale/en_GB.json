@@ -3,11 +3,15 @@
     "nameShort": "English",
     "textDirection": "ltr",
     "strings": {
+        "title": "Account - Subnodal",
         "subnodal": "Subnodal",
 
         "redirectTitle": "Signing you in...",
         "signInTitle": "Sign into Subnodal",
         "createTitle": "Create a Subnodal account",
+        "platformErrorTitle": "We couldn't sign you in right now",
+
+        "platformErrorDescription": "The platform that uses your Subnodal Account has not been configured correctly to handle signing in. Please try again later or contact the developers of the platform if the issue persists.",
 
         "email": "Email",
         "password": "Password",
@@ -19,6 +23,19 @@
         "create": "Create",
         "cancel": "Cancel",
         "back": "Back",
+
+        "error_noEmail": "Please enter an email address.",
+        "error_noPassword": "Please enter a password.",
+        "error_invalidEmail": "The email address you entered is invalid.",
+        "error_accountSuspended": "Your Subnodal Account is suspended. Please contact Subnodal for more info.",
+        "error_accountNotFound": "There is no Subnodal Account registered with that email address.",
+        "error_incorrectPassword": "The password you entered was incorrect.",
+        "error_consentNotGiven": "Please accept the Terms of Service and Privacy Policy.",
+        "error_accountExists": "A Subnodal Account with that email address already exists.",
+        "error_unavailable": "Sorry, signing up is currently unavailable. Please try again later.",
+        "error_weakPassword": "Your password must be at least 6 characters long.",
+        "error_noPasswordConfirmation": "Please confirm your password by entering it again.",
+        "error_passwordConfirmationMismatch": "Your password does not match your confirmed password. Please enter it again.",
 
         "copyright": "Copyright © Subnodal Technologies. All Rights Reserved."
     }

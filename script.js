@@ -11,30 +11,22 @@ var subElements = require("com.subnodal.subelements");
 var requests = require("com.subnodal.subelements.requests");
 var l10n = require("com.subnodal.subelements.l10n");
 
+var logic = require("com.subnodal.accounts.logic");
+var presentation = require("com.subnodal.accounts.presentation");
+var resources = require("com.subnodal.accounts.resources");
+
 var _ = l10n.translate;
-
-const pages = {
-    REDIRECT: 0,
-    SIGN_IN: 1,
-    CREATE_ACCOUNT: 2
-};
-
-var page = pages.SIGN_IN;
-
-function visitPage(pageToVisit) {
-    page = pageToVisit;
-
-    subElements.render();
-}
 
 Promise.all([
     requests.getJson("locale/en_GB.json"),
-    requests.getJson("locale/fr_FR.json")
+    requests.getJson("locale/fr_FR.json"),
+    requests.getJson("locale/zh_CN.json")
 ]).then(function(resources) {
     subElements.init({
         languageResources: {
             "en_GB": resources[0],
-            "fr_FR": resources[1]
+            "fr_FR": resources[1],
+            "zh_CN": resources[2]
         },
         localeCode: localStorage.getItem("locale") || undefined,
         fallbackLocaleCode: "en_GB"
@@ -56,7 +48,13 @@ Promise.all([
             l10n.switchToLocale(event.target.value);
             localStorage.setItem("locale", event.target.value);
 
+            document.getElementsByTagName("title")[0].innerText = _("title");
+
             subElements.render();
         });
+
+        document.getElementsByTagName("title")[0].innerText = _("title");
+
+        logic.init();
     });
 });

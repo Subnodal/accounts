@@ -308,6 +308,14 @@ card loader::before, card loader::after {
     text-align: end;
 }
 
+.desktop {
+    display: unset;
+}
+
+.mobile {
+    display: none;
+}
+
 .noMargin {
     margin: 0;
 }
@@ -331,6 +339,13 @@ card loader::before, card loader::after {
     text-align: start;
 }
 
+.authContent .errorMessage {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1em;
+    text-align: start;
+}
+
 .authButtons {
     display: flex;
     flex-direction: row-reverse;
@@ -351,6 +366,27 @@ card loader::before, card loader::after {
 @media (max-width: 500px) {
     card.auth {
         width: 100%;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: unset;
+    }
+
+    #language {
+        width: calc(100% - 2em);
+    }
+
+    #language ~ span {
+        display: block;
+        margin-top: 10px;
+    }
+
+    #language + span {
+        display: none;
     }
 }
 

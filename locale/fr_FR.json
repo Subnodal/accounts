@@ -3,11 +3,15 @@
     "nameShort": "Français",
     "textDirection": "ltr",
     "strings": {
+        "title": "Compte - Sousnœud",
         "subnodal": "Sousnœud",
 
         "redirectTitle": "Connexion en cours ...",
         "signInTitle": "Connectez-vous au Sousnœud",
         "createTitle": "Créer un compte Sousnœud",
+        "platformErrorTitle": "Nous ne pouvons pas vous connecter pour le moment",
+
+        "platformErrorDescription": "La plate-forme qui utilise votre compte Sousnœud n'a pas été configurée correctement pour gérer la connexion. Veuillez réessayer plus tard ou contacter les développeurs de la plate-forme si le problème persiste.",
 
         "email": "Email",
         "password": "Mot de passe",
@@ -20,6 +24,19 @@
         "cancel": "Annuler",
         "back": "Retour",
 
-        "copyright": "Copyright © Sousnœud Technologies. Tous les droits sont réservés."
+        "error_noEmail": "Veuillez entrer un adresse email.",
+        "error_noPassword": "Veuillez entrer un mot de passe.",
+        "error_invalidEmail": "L'adresse email que vous avez saisie n'est pas valide.",
+        "error_accountSuspended": "Votre compte Sousnœud est suspendu. Veuillez contacter Sousnœud pour plus d'informations.",
+        "error_accountNotFound": "Aucun compte de Sousnœud n'est enregistré avec cette adresse email.",
+        "error_incorrectPassword": "Le mot de passe que vous avez entré est incorrect.",
+        "error_consentNotGiven": "Veuillez accepter les conditions d'utilisation et la politique de confidentialité.",
+        "error_accountExists": "Un compte de Sousnœud avec cette adresse email existe déjà.",
+        "error_unavailable": "Désolé, l'inscription n'est pas disponible actuellement. Veuillez réessayer plus tard.",
+        "error_weakPassword": "Votre mot de passe doit contenir au moins 6 caractères.",
+        "error_noPasswordConfirmation": "Veuillez confirmer votre mot de passe en le saisissant à nouveau.",
+        "error_passwordConfirmationMismatch": "Votre mot de passe ne correspond pas à votre mot de passe confirmé. Veuillez le saisir à nouveau.",
+
+        "copyright": "Copyright © Subnodal Technologies. Tous les droits sont réservés."
     }
 }

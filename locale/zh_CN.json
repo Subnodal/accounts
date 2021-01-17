@@ -1,0 +1,42 @@
+{
+    "name": "中文（简体）",
+    "nameShort": "中文",
+    "textDirection": "ltr",
+    "strings": {
+        "title": "帐户——次结",
+        "subnodal": "次结",
+
+        "redirectTitle": "正在登录...",
+        "signInTitle": "登录到次结",
+        "createTitle": "创建次结帐户",
+        "platformErrorTitle": "我们目前无法登录",
+
+        "platformErrorDescription": "未正确配置使用您的次结帐户的平台来处理登录。如果问题仍然存在,请稍后重试或与该平台的开发人员联系。",
+
+        "email": "电子邮件",
+        "password": "密码",
+        "confirmPassword": "确认密码",
+
+        "createConsent": "我已阅读并接受服务条款和隐私政策。",
+
+        "signIn": "登录",
+        "create": "创造",
+        "cancel": "取消",
+        "back": "背部",
+
+        "error_noEmail": "请输入一个电子邮件地址。",
+        "error_noPassword": "请输入密码。",
+        "error_invalidEmail": "您输入的电子邮件地址无效。",
+        "error_accountSuspended": "您的次结帐户已被暂停。请联系次结以获取更多信息。",
+        "error_accountNotFound": "没有使用该电子邮件地址注册的次结帐户。",
+        "error_incorrectPassword": "您输入的密码不正确。",
+        "error_consentNotGiven": "请接受服务条款和隐私政策。",
+        "error_accountExists": "具有该电子邮件地址的次结帐户已存在。",
+        "error_unavailable": "很抱歉,目前无法注册。请稍后再试。",
+        "error_weakPassword": "您的密码必须至少6个字符长。",
+        "error_noPasswordConfirmation": "请再次输入以确认密码。",
+        "error_passwordConfirmationMismatch": "您的密码与您确认的密码不匹配。请再次输入。",
+
+        "copyright": "版权所有©Subnodal Technologies。保留所有权利。"
+    }
+}

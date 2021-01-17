@@ -17,8 +17,16 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass&family=Overpass+Mono&family=Material+Icons&display=swap">
         <link rel="stylesheet" href="/style.css">
+        <script src="https://cdn.subnodal.com/lib/submodules.min.js"></script>
         <script src="https://cdn.subnodal.com/lib/subelements.min.js"></script>
-        <script src="script.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-functions.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+        <script src="/logic.js"></script>
+        <script src="/presentation.js"></script>
+        <script src="/resources.js"></script>
+        <script src="/script.js"></script>
     </head>
     <body hidden>
         <header>
@@ -26,37 +34,59 @@
         </header>
         <main>
             <card class="auth middle">
-                <s-if condition="{{ page == pages.REDIRECT }}">
+                <s-if condition="{{ presentation.getPage() == presentation.pages.REDIRECT }}">
                     <h2 class="mono" translate>redirectTitle</h2>
                     <loader></loader>
                 </s-if>
-                <s-if condition="{{ page == pages.SIGN_IN }}">
+                <s-if condition="{{ presentation.getPage() == presentation.pages.SIGN_IN }}">
                     <h2 class="mono" translate>signInTitle</h2>
+                </s-if>
+                <s-if condition="{{ presentation.getPage() == presentation.pages.CREATE_ACCOUNT }}">
+                    <h2 class="mono" translate>createTitle</h2>
+                </s-if>
+                <s-if condition="{{ presentation.getPage() == presentation.pages.PLATFORM_ERROR }}">
+                    <h2 class="mono" translate>platformErrorTitle</h2>
+                </s-if>
+                <s-if condition="{{ presentation.getPage() == presentation.pages.SIGN_IN || presentation.getPage() == presentation.pages.CREATE_ACCOUNT }}">
                     <div class="authContent">
-                        <input placeholder="{{ _('email') }}">
-                        <input placeholder="{{ _('password') }}">
-                        <br>
-                        <a href="javascript:visitPage(pages.CREATE_ACCOUNT);" translate>createTitle</a>
+                        <input placeholder="{{ _('email') }}" id="email">
+                        <input type="password" placeholder="{{ _('password') }}" id="password">
+                        <s-if condition="{{ presentation.getPage() == presentation.pages.CREATE_ACCOUNT }}">
+                            <input type="password" placeholder="{{ _('confirmPassword') }}" id="confirmPassword">
+                            <label>
+                                <input type="checkbox" id="createConsent">
+                                <span translate>createConsent</span>
+                            </label>
+                        </s-if>
+                        <s-if condition="{{ presentation.getErrorMessage() != null }}">
+                            <p class="errorMessage">{{ presentation.getErrorMessage() }}</p>
+                        </s-if>
+                        <s-if condition="{{ presentation.getPage() == presentation.pages.SIGN_IN }}">
+                            <br>
+                            <a href="javascript:presentation.visitPage(presentation.pages.CREATE_ACCOUNT);" translate>createTitle</a>
+                        </s-if>
                     </div>
+                </s-if>
+                <s-if condition="{{ presentation.getPage() == presentation.pages.PLATFORM_ERROR }}">
+                    <div class="authContent">
+                        <p class="errorMessage" translate>platformErrorDescription</p>
+                    </div>
+                </s-if>
+                <s-if condition="{{ presentation.getPage() == presentation.pages.SIGN_IN }}">
                     <div class="authButtons">
-                        <button translate>signIn</button>
+                        <button onclick="presentation.signIn();" translate>signIn</button>
                         <button onclick="window.history.back();" class="flat" translate>cancel</button>
                     </div>
                 </s-if>
-                <s-if condition="{{ page == pages.CREATE_ACCOUNT }}">
-                    <h2 class="mono" translate>createTitle</h2>
-                    <div class="authContent">
-                        <input placeholder="{{ _('email') }}">
-                        <input placeholder="{{ _('password') }}">
-                        <input placeholder="{{ _('confirmPassword') }}">
-                        <label>
-                            <input type="checkbox">
-                            <span translate>createConsent</span>
-                        </label>
-                    </div>
+                <s-if condition="{{ presentation.getPage() == presentation.pages.CREATE_ACCOUNT }}">
                     <div class="authButtons">
-                        <button translate>create</button>
-                        <button onclick="visitPage(pages.SIGN_IN);" class="flat" translate>back</button>
+                        <button onclick="presentation.createAccount();" translate>create</button>
+                        <button onclick="presentation.visitPage(presentation.pages.SIGN_IN);" class="flat" translate>back</button>
+                    </div>
+                </s-if>
+                <s-if condition="{{ presentation.getPage() == presentation.pages.PLATFORM_ERROR }}">
+                    <div class="authButtons">
+                        <button onclick="window.history.back();" translate>back</button>
                     </div>
                 </s-if>
             </card>
