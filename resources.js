@@ -117,8 +117,6 @@ namespace("com.subnodal.accounts.resources", function(exports) {
                         private: core.generateKey(64)
                     };
 
-                    console.log(JSON.stringify(tokens));
-
                     firebase.database().ref("users/" + userId + "/tokens/" + platformId).set(tokens).then(function() {
                         resolve(tokens);
                     }).catch(function(error) {

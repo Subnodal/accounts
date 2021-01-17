@@ -34,7 +34,7 @@ namespace("com.subnodal.accounts.presentation", function(exports) {
         var previousPage = exports.getPage();
 
         try {
-            logic.signIn(elements.email.value, elements.password.value).catch(function(error) {
+            logic.signIn(elements.email.value, elements.password.value).then(logic.continueToPlatform).catch(function(error) {
                 exports.visitPage(previousPage);
 
                 subElements.render();
@@ -70,7 +70,7 @@ namespace("com.subnodal.accounts.presentation", function(exports) {
         var previousPage = exports.getPage();
 
         try {
-            logic.createAccount(elements.email.value, elements.password.value, elements.confirmPassword.value, elements.createConsent.checked).catch(function(error) {
+            logic.createAccount(elements.email.value, elements.password.value, elements.confirmPassword.value, elements.createConsent.checked).then(logic.continueToPlatform).catch(function(error) {
                 exports.visitPage(previousPage);
 
                 subElements.render();

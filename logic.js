@@ -73,28 +73,32 @@ namespace("com.subnodal.accounts.logic", function(exports) {
         return resources.createAccount(email.trim(), password.trim());
     };
 
+    exports.continueToPlatform = function() {
+        if (core.parameter("platform") != null) {
+            var platformData = null;
+
+            resources.getPlatform(core.parameter("platform")).then(function(data) {
+                platformData = data;
+
+                return resources.getCurrentUserTokens(core.parameter("platform"));
+            }).then(function(userTokens) {
+                if (typeof(platformData.completeUrl) != "string") {
+                    return Promise.reject({message: "No completion URL was supplied", code: exports.errorCodes.PLATFORM_MISCONFIGURATION});
+                }
+
+                window.location.replace(platformData.completeUrl.replace(/{public}/g, userTokens.public).replace(/{private}/g, userTokens.private));
+            }).catch(function() {
+                presentation.visitPage(presentation.pages.PLATFORM_ERROR);
+            });
+        } else {
+            presentation.visitPage(presentation.pages.PLATFORM_ERROR);
+        }
+    };
+
     exports.init = function() {
         resources.awaitSignIn().then(function(signedIn) {
             if (signedIn && core.parameter("switchAccounts") != "true") {
-                if (core.parameter("platform") != null) {
-                    var platformData = null;
-
-                    resources.getPlatform(core.parameter("platform")).then(function(data) {
-                        platformData = data;
-
-                        return resources.getCurrentUserTokens(core.parameter("platform"));
-                    }).then(function(userTokens) {
-                        if (typeof(platformData.completeUrl) != "string") {
-                            return Promise.reject({message: "No completion URL was supplied", code: exports.errorCodes.PLATFORM_MISCONFIGURATION});
-                        }
-
-                        window.location.replace(platformData.completeUrl.replace(/{public}/g, userTokens.public).replace(/{private}/g, userTokens.private));
-                    }).catch(function() {
-                        presentation.visitPage(presentation.pages.PLATFORM_ERROR);
-                    });
-                } else {
-                    presentation.visitPage(presentation.pages.PLATFORM_ERROR);
-                }
+                exports.continueToPlatform();
             } else {
                 presentation.visitPage(presentation.pages.SIGN_IN);
             }
