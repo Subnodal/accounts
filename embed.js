@@ -14,11 +14,13 @@ var l10n = require("com.subnodal.subelements.l10n");
 
 var _ = l10n.translate;
 
+var popupLocation = `top=${(screen.height / 2) - (600 / 2)},left=${(screen.width / 2) - (550 / 2)},width=550,height=600`;
+
 function openPopup() {
     if (core.parameter("platform") != null) {
-        window.open("/?platform=" + encodeURIComponent(core.parameter("platform")), "popUpWindow", "width=550,height=600");
+        window.open("/?platform=" + encodeURIComponent(core.parameter("platform")), "popUpWindow", popupLocation);
     } else {
-        window.open("/", "popUpWindow", "width=550,height=600");
+        window.open("/", "popUpWindow", popupLocation);
     }
 }
 
