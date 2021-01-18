@@ -89,7 +89,7 @@ namespace("com.subnodal.accounts.logic", function(exports) {
                 var completeUrl = platformData.completeUrl.replace(/{public}/g, encodeURIComponent(userTokens.public)).replace(/{private}/g, encodeURIComponent(userTokens.private));
 
                 if (window.opener && window.opener != window) {
-                    window.opener.postMessage(completeUrl, "https://subnodal.com");
+                    window.opener.postMessage(completeUrl, "https://accounts.subnodal.com");
 
                     close();
                 } else {

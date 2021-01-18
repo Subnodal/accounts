@@ -39,7 +39,7 @@ Promise.all([
 });
 
 window.addEventListener("message", function(event) {
-    if (event.origin != "https://subnodal.com") {
+    if (event.origin != "https://accounts.subnodal.com") {
         return;
     }
 
