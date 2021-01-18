@@ -112,6 +112,14 @@ namespace("com.subnodal.accounts.presentation", function(exports) {
         return errorMessage != null ? l10n.translate(errorMessage) : null;
     };
 
+    exports.exit = function() {
+        if (window.opener && window.opener != window) {
+            close();
+        } else {
+            window.history.back();
+        }
+    };
+
     subElements.ready(function() {
         elements = {
             email: document.getElementById("email"),
