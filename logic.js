@@ -86,8 +86,18 @@ namespace("com.subnodal.accounts.logic", function(exports) {
                     return Promise.reject({message: "No completion URL was supplied", code: exports.errorCodes.PLATFORM_MISCONFIGURATION});
                 }
 
-                window.location.replace(platformData.completeUrl.replace(/{public}/g, userTokens.public).replace(/{private}/g, userTokens.private));
-            }).catch(function() {
+                var completeUrl = platformData.completeUrl.replace(/{public}/g, encodeURIComponent(userTokens.public)).replace(/{private}/g, encodeURIComponent(userTokens.private));
+
+                if (window.opener && window.opener != window) {
+                    window.opener.postMessage(completeUrl, "https://subnodal.com");
+
+                    close();
+                } else {
+                    window.location.replace(completeUrl);
+                }
+            }).catch(function(error) {
+                console.error(error);
+
                 presentation.visitPage(presentation.pages.PLATFORM_ERROR);
             });
         } else {

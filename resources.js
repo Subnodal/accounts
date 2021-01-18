@@ -84,7 +84,6 @@ namespace("com.subnodal.accounts.resources", function(exports) {
     exports.getPlatform = function(platformId) {
         return new Promise(function(resolve, reject) {
             firebase.database().ref("platforms/" + platformId).once("value").then(function(snapshot) {
-                console.log(snapshot.val());
                 if (snapshot.val() != null) {
                     resolve(snapshot.val());
                 } else {

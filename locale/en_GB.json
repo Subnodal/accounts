@@ -5,6 +5,7 @@
     "strings": {
         "title": "Account - Subnodal",
         "subnodal": "Subnodal",
+        "signInWith": "Sign in with",
 
         "redirectTitle": "Signing you in...",
         "signInTitle": "Sign into Subnodal",

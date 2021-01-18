@@ -359,6 +359,31 @@ card loader::before, card loader::after {
     margin: 5px;
 }
 
+.embedButton {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--card);
+    border-radius: 5vw;
+    font-size: min(5vw, 50vh);
+    transition: 0.5s background-color;
+}
+
+.embedButton:hover {
+    text-decoration: none;
+}
+
+.embedButton:active {
+    background-color: var(--uiInput);
+}
+
+.embedButton .embedMessage {
+    width: fit-content;
+    margin: auto;
+    padding-top: calc(50vh - 0.5em);
+    font-family: "Overpass Mono", "Roboto Mono", sans-serif;
+}
+
 #language {
     width: 150px;
 }
