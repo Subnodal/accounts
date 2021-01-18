@@ -45,5 +45,5 @@ window.addEventListener("message", function(event) {
         return;
     }
 
-    window.top.location.replace(event.data);
+    window.top.location.href = event.data;
 });
