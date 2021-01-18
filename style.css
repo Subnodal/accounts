@@ -79,6 +79,10 @@ html, body {
     color: var(--foreground);
 }
 
+html.embed, html.embed body {
+    background-color: var(--transparent);
+}
+
 header {
     position: fixed;
     top: 0;
