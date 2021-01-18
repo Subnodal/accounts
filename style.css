@@ -381,11 +381,35 @@ card loader::before, card loader::after {
     background-color: var(--uiInput);
 }
 
+.embedButton:focus {
+    border: 2px solid black;
+}
+
+.embedButton:focus:not(:focus-visible) {
+    border: none;
+}
+
+.embedButton:focus-visible {
+    outline: 2px solid black;
+}
+
 .embedButton .embedMessage {
     width: fit-content;
     margin: auto;
     padding-top: calc(50vh - 0.5em);
     font-family: "Overpass Mono", "Roboto Mono", sans-serif;
+}
+
+.embedButton:focus .embedMessage {
+    padding-top: calc(50vh - 0.5em - 2px);
+}
+
+.embedButton:focus:not(:focus-visible) .embedMessage {
+    padding-top: calc(50vh - 0.5em);
+}
+
+.embedButton:focus-visible .embedMessage {
+    padding-top: calc(50vh - 0.5em - 2px);
 }
 
 #language {
