@@ -5,6 +5,7 @@
     "strings": {
         "title": "帐户——次结",
         "subnodal": "次结",
+        "signInWith": "登录：",
 
         "redirectTitle": "正在登录...",
         "signInTitle": "登录到次结",

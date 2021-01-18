@@ -5,6 +5,7 @@
     "strings": {
         "title": "Compte - Sousnœud",
         "subnodal": "Sousnœud",
+        "signInWith": "Se connecter avec",
 
         "redirectTitle": "Connexion en cours ...",
         "signInTitle": "Connectez-vous au Sousnœud",
