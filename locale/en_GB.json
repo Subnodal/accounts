@@ -9,7 +9,7 @@
 
         "redirectTitle": "Signing you in...",
         "signInTitle": "Sign into Subnodal",
-        "createTitle": "Create a Subnodal account",
+        "createTitle": "Create a Subnodal Account",
         "platformErrorTitle": "We couldn't sign you in right now",
 
         "platformErrorDescription": "The platform that uses your Subnodal Account has not been configured correctly to handle signing in. Please try again later or contact the developers of the platform if the issue persists.",
