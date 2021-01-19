@@ -280,7 +280,7 @@ loader::before {
 }
 
 loader::after {
-    left: calc(2em - 2.5);
+    left: calc(2em - 2.5px);
     width: calc(2em + 5px);
     height: calc(calc(2em * 2) + 5px);
     background-color: var(--background);
