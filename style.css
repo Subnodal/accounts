@@ -394,6 +394,7 @@ card loader::before, card loader::after {
 }
 
 .embedButton .embedMessage {
+    width: -moz-fit-content;
     width: fit-content;
     margin: auto;
     padding-top: calc(50vh - 0.5em);
