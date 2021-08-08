@@ -13,6 +13,10 @@ h1.logo, h2.logo, h3.logo {
     font-weight: 400;
 }
 
+body {
+    background-color: var(--background);
+}
+
 html.embed, html.embed body {
     background-color: transparent;
 }
@@ -156,4 +160,10 @@ header + main {
 
 #language {
     width: 150px;
+}
+
+@media (prefers-color-scheme: dark) {
+    header {
+        background-color: rgba(30, 30, 30, 0.9);
+    }
 }
