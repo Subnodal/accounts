@@ -122,10 +122,26 @@ namespace("com.subnodal.accounts.presentation", function(exports) {
 
     subElements.ready(function() {
         elements = {
-            email: document.getElementById("email"),
-            password: document.getElementById("password"),
-            confirmPassword: document.getElementById("confirmPassword"),
-            createConsent: document.getElementById("createConsent")
+            email: document.querySelector("#email"),
+            password: document.querySelector("#password"),
+            confirmPassword: document.querySelector("#confirmPassword"),
+            createConsent: document.querySelector("#createConsent")
         };
+
+        elements.password.addEventListener("keydown", function(event) {
+            if (event.key == "Enter") {
+                if (presentation.getPage() == presentation.pages.SIGN_IN) {
+                    exports.signIn();
+                }
+            }
+        });
+
+        elements.confirmPassword.addEventListener("keydown", function(event) {
+            if (event.key == "Enter") {
+                if (presentation.getPage() == presentation.pages.CREATE_ACCOUNT) {
+                    exports.createAccount();
+                }
+            }
+        });
     });
 });
