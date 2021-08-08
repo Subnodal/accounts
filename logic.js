@@ -73,6 +73,32 @@ namespace("com.subnodal.accounts.logic", function(exports) {
         return resources.createAccount(email.trim(), password.trim());
     };
 
+    function redirectToUrl(url) {
+        if (window.opener && window.opener != window) {
+            window.opener.postMessage(url, "https://accounts.subnodal.com");
+
+            close();
+        } else {
+            window.location.replace(url);
+        }
+    }
+
+    function redirectWithUserTokens(platformData, userTokens) {
+        if (typeof(platformData.completeUrl) != "string") {
+            return Promise.reject({message: "No completion URL was supplied", code: exports.errorCodes.PLATFORM_MISCONFIGURATION});
+        }
+
+        redirectToUrl(platformData.completeUrl.replace(/{public}/g, encodeURIComponent(userTokens.public)).replace(/{private}/g, encodeURIComponent(userTokens.private)));
+    }
+
+    function redirectWithProfileToken(platformData, profileToken) {
+        if (typeof(platformData.completeUrl) != "string") {
+            return Promise.reject({message: "No completion URL was supplied", code: exports.errorCodes.PLATFORM_MISCONFIGURATION});
+        }
+
+        redirectToUrl(platformData.completeUrl.replace(/{token}/g, encodeURIComponent(profileToken)));
+    }
+
     exports.continueToPlatform = function() {
         if (core.parameter("platform") != null) {
             var platformData = null;
@@ -80,20 +106,10 @@ namespace("com.subnodal.accounts.logic", function(exports) {
             resources.getPlatform(core.parameter("platform")).then(function(data) {
                 platformData = data;
 
-                return resources.getCurrentUserTokens(core.parameter("platform"));
-            }).then(function(userTokens) {
-                if (typeof(platformData.completeUrl) != "string") {
-                    return Promise.reject({message: "No completion URL was supplied", code: exports.errorCodes.PLATFORM_MISCONFIGURATION});
-                }
-
-                var completeUrl = platformData.completeUrl.replace(/{public}/g, encodeURIComponent(userTokens.public)).replace(/{private}/g, encodeURIComponent(userTokens.private));
-
-                if (window.opener && window.opener != window) {
-                    window.opener.postMessage(completeUrl, "https://accounts.subnodal.com");
-
-                    close();
+                if (platformData.profileAuth) {
+                    return resources.getProfileToken().then((profileToken) => redirectWithProfileToken(platformData, profileToken));
                 } else {
-                    window.location.replace(completeUrl);
+                    return resources.getCurrentUserTokens(core.parameter("platform")).then((userTokens) => redirectWithUserTokens(platformData, userTokens));
                 }
             }).catch(function(error) {
                 console.error(error);

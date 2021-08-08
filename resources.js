@@ -93,6 +93,24 @@ namespace("com.subnodal.accounts.resources", function(exports) {
         });
     };
 
+    exports.getProfileToken = function() {
+        return new Promise(function(resolve, reject) {
+            firebase.database().ref("users/" + userId + "/profileToken").once("value").then(function(snapshot) {
+                if (snapshot.val() != null) {
+                    resolve(snapshot.val());
+
+                    return;
+                }
+
+                var generatedKey = core.generateKey(64);
+
+                firebase.database().ref("users/" + userId + "/profileToken").set(generatedKey).then(function() {
+                    resolve(generatedKey);
+                });
+            });
+        });
+    };
+
     exports.getCurrentUserTokens = function(platformId) {
         return new Promise(function(resolve, reject) {
             if (typeof(platformId) != "string") {
