@@ -15,7 +15,6 @@ namespace("com.subnodal.accounts.presentation", function(exports) {
 
     var page = exports.pages.REDIRECT;
     var errorMessage = null;
-    var platformErrorMessage = null;
 
     exports.getPage = function() {
         return page;
@@ -26,6 +25,12 @@ namespace("com.subnodal.accounts.presentation", function(exports) {
         errorMessage = null;
 
         subElements.render();
+
+        switch (pageToVisit) {
+            case exports.pages.SIGN_IN:
+            case exports.pages.CREATE_ACCOUNT:
+                elements.email.focus();
+        }
     };
 
     exports.signIn = function() {
