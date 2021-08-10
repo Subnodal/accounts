@@ -93,6 +93,10 @@ namespace("com.subnodal.accounts.resources", function(exports) {
         });
     };
 
+    exports.getUserId = function() {
+        return userId;
+    };
+
     exports.getProfileToken = function() {
         return new Promise(function(resolve, reject) {
             firebase.database().ref("users/" + userId + "/profileToken").once("value").then(function(snapshot) {
