@@ -1,5 +1,6 @@
 namespace("com.subnodal.accounts.logic", function(exports) {
     var core = require("com.subnodal.subelements.core");
+    var l10n = require("com.subnodal.subelements.l10n");
 
     var presentation = require("com.subnodal.accounts.presentation");
     var resources = require("com.subnodal.accounts.resources");
@@ -88,7 +89,11 @@ namespace("com.subnodal.accounts.logic", function(exports) {
             return Promise.reject({message: "No completion URL was supplied", code: exports.errorCodes.PLATFORM_MISCONFIGURATION});
         }
 
-        redirectToUrl(platformData.completeUrl.replace(/{public}/g, encodeURIComponent(userTokens.public)).replace(/{private}/g, encodeURIComponent(userTokens.private)));
+        redirectToUrl(platformData.completeUrl
+            .replace(/{public}/g, encodeURIComponent(userTokens.public))
+            .replace(/{private}/g, encodeURIComponent(userTokens.private))
+            .replace(/{lang}/g, require("com.subnodal.subelements.l10n").getLocaleCode())
+        );
     }
 
     function redirectWithProfileToken(platformData, profileToken) {
@@ -96,7 +101,10 @@ namespace("com.subnodal.accounts.logic", function(exports) {
             return Promise.reject({message: "No completion URL was supplied", code: exports.errorCodes.PLATFORM_MISCONFIGURATION});
         }
 
-        redirectToUrl(platformData.completeUrl.replace(/{token}/g, encodeURIComponent(profileToken)));
+        redirectToUrl(platformData.completeUrl
+            .replace(/{token}/g, encodeURIComponent(profileToken))
+            .replace(/{lang}/g, require("com.subnodal.subelements.l10n").getLocaleCode())
+        );
     }
 
     exports.continueToPlatform = function() {
