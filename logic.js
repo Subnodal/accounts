@@ -102,7 +102,6 @@ namespace("com.subnodal.accounts.logic", function(exports) {
         }
 
         redirectToUrl(platformData.completeUrl
-            .replace(/{uid}/g, encodeURIComponent(resources.getUserId()))
             .replace(/{token}/g, encodeURIComponent(profileToken))
             .replace(/{locale}/g, require("com.subnodal.subelements.l10n").getLocaleCode())
         );
