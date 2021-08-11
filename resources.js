@@ -97,6 +97,10 @@ namespace("com.subnodal.accounts.resources", function(exports) {
         return userId;
     };
 
+    exports.getUserEmail = function() {
+        return firebase.auth().currentUser.email;
+    };
+
     exports.getProfileToken = function() {
         return new Promise(function(resolve, reject) {
             firebase.database().ref("users/" + userId + "/profileToken").once("value").then(function(snapshot) {
@@ -111,6 +115,14 @@ namespace("com.subnodal.accounts.resources", function(exports) {
                 firebase.database().ref("users/" + userId + "/profileToken").set(generatedKey).then(function() {
                     resolve(generatedKey);
                 });
+            });
+        }).then(function(token) {
+            return firebase.database().ref("profiles/" + token + "/uid").set(userId).then(function() {
+                return Promise.resolve(token);
+            });
+        }).then(function(token) {
+            return firebase.database().ref("profiles/" + token + "/email").set(exports.getUserEmail()).then(function() {
+                return Promise.resolve(token);
             });
         });
     };
