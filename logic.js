@@ -93,6 +93,7 @@ namespace("com.subnodal.accounts.logic", function(exports) {
             .replace(/{public}/g, encodeURIComponent(userTokens.public))
             .replace(/{private}/g, encodeURIComponent(userTokens.private))
             .replace(/{locale}/g, l10n.getLocaleCode())
+            .replace(/{payload}/g, encodeURIComponent(core.parameter("payload")))
         );
     }
 
@@ -104,6 +105,7 @@ namespace("com.subnodal.accounts.logic", function(exports) {
         redirectToUrl(platformData.completeUrl
             .replace(/{token}/g, encodeURIComponent(profileToken))
             .replace(/{locale}/g, l10n.getLocaleCode())
+            .replace(/{payload}/g, encodeURIComponent(core.parameter("payload")))
         );
     }
 
