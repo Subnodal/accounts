@@ -75,7 +75,7 @@ namespace("com.subnodal.accounts.logic", function(exports) {
     };
 
     function redirectToUrl(url) {
-        if (window.opener && window.opener != window) {
+        if (core.parameter("fromEmbed") == "true") {
             window.opener.postMessage(url, "https://accounts.subnodal.com");
 
             close();

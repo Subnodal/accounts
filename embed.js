@@ -18,9 +18,9 @@ var popupLocation = `top=${(screen.height / 2) - (600 / 2)},left=${(screen.width
 
 function openPopup() {
     if (core.parameter("platform") != null) {
-        window.open("/?platform=" + encodeURIComponent(core.parameter("platform")) + "&locale=" + encodeURIComponent(l10n.getLocaleCode()), "popUpWindow", popupLocation);
+        window.open(`/?platform=${encodeURIComponent(core.parameter("platform"))}&locale=${encodeURIComponent(l10n.getLocaleCode())}&fromEmbed=true`, "popUpWindow", popupLocation);
     } else {
-        window.open("/?locale=" + encodeURIComponent(l10n.getLocaleCode()), "popUpWindow", popupLocation);
+        window.open(`/?locale=${encodeURIComponent(l10n.getLocaleCode())}&fromEmbed=true`, "popUpWindow", popupLocation);
     }
 }
 
